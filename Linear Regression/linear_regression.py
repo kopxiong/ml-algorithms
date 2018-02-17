@@ -1,13 +1,15 @@
 # -*- coding: utf-8 -*-
 
+# https://github.com/sourabhdattawad/Linear-regression-from-scratch-in-python
+
 import numpy as np
 import random
 import sklearn
-from sklearn.datasets.samples_generator import make_regression
 import pylab
-from scipy import stats
 import seaborn as sns
 import matplotlib.pyplot as plt
+from scipy import stats
+from sklearn.datasets.samples_generator import make_regression
 
 
 class linearRegression:
@@ -35,7 +37,7 @@ class linearRegression:
 
             error = self.cost(X, y, t0, t1)
 
-            # If error difference current and prev is less than some value here(0.0001)
+            # If error difference of current and prev is less than some threshold: here(0.0001)
             if abs(J - error) < 0.0001:
                 print("Converged successfully")
                 converged = True
@@ -45,12 +47,13 @@ class linearRegression:
         return t0, t1
 
 if __name__ == '__main__':
-    # Dummy dataset
+    # Dummy dataset (tried to use dataset in Kaggle, but suffered from
+    # RuntimeWarning: overflow encountered in square)
     X, y = make_regression(n_samples=100, n_features=1, n_informative=1, random_state=0, noise=35)
 
     # some initial values
-    alpha = 0.01
-    eps = 0.01
+    alpha  = 0.01
+    eps    = 0.01
     t0, t1 = 0, 0
 
     print("Initial scatter plot")
@@ -59,7 +62,6 @@ if __name__ == '__main__':
 
     lr_classifier = linearRegression()
     theta0, theta1 = lr_classifier.gradientDescent(alpha, X, y, t0, t1, eps, max_iter=1000)
-
     print('theta0 = %s theta1 = %s' %(theta0, theta1))
 
     print("Line plot after linear regression")
