@@ -1,2 +1,2 @@
-# ml-algorithms
-Implementation of some popular machine learning algorithms
+# Machine Learning Algorithms
+Implementation of some popular machine learning algorithms in Python3.
